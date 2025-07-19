@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El lado oscuro del agua en Mócupe</title>
+<style>
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* el contenido crece para ocupar el espacio */
+}
+
+.site-footer {
+  background-color: #aee5e6; 
+  color: #b3e7e8;
+  width: 100%;
+  font-size: 14px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.footer-column {
+  flex: 1 1 200px;
+  margin: 20px;
+}
+
+.footer-column h4 {
+  color: #00cccc;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin: 5px 0;
+}
+
+.footer-column ul li a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.footer-column ul li a:hover {
+  color: #00cccc;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin: 5px;
+}
+
+.social-icons img {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.2);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 15px;
+  background-color: #000;
+  font-size: 12px;
+  color: #888;
+}
+
+@media(max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-column {
+    margin: 10px 0;
+  }
+}
+.site-footer {
+  background-color: #3a7278;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.site-footer .footer-text {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.site-footer .footer-columns {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.site-footer .footer-column h4 {
+  font-size: 16px;
+  margin-bottom: 5px;
+  text-decoration: underline;
+  color: #fff;
+}
+
+.site-footer .footer-column p {
+  margin: 2px 0;
+  font-size: 14px;
+  color: #fff;
+}
+
+.site-footer .footer-column a {
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.site-footer .footer-column a:hover {
+  opacity: 0.8;
+}
+
+body {
+  font-family: 'Segoe UI', 'Lucida Sans Unicode';
+  background-color: #e5fffb;
+  color: #333;
+  line-height: 1.6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  border-box: 10;
+  font-family: 'Segoe UI', 'Lucida Sans Unicode';
+  background-color: #e5fffb;
+  color: #333;
+  line-height: 1.6;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #96e3db;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 10px 20px;
+  border-radius: 0 0 30px 30px;
+}
+
+.nav-icons {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-item {
+  position: relative;
+  text-align: center;
+}
+
+.gif-button {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gif-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px white;
+}
+
+.tooltip {
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.nav-item:hover .tooltip {
+  opacity: 1;
+}
+
+section {
+  display: none;
+  min-height: calc(100vh - 90px);
+  background-color: #e5fffb;
+  padding-top: 90px;
+}
+
+section.active {
+  display: block;
+}
+
+@font-face {
+  font-family: 'MiFuentePortada';
+  src: url('fuentes/Queen Misti.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.portada {
+  position: relative;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 30px 30px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.portada::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(55, 117, 133, 0.4);
+}
+
+.portada h1 {
+  font-family: 'MiFuentePortada', sans-serif;
+  position: relative;
+  z-index: 1;
+  font-size: 36px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+
+/* CONTENIDO Y BLOQUES */
+.contenido {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: left;
+  background-color: #c3fde7;
+}
+
+.contenido h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.contenido p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.galeria {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.item {
+  flex: 0 1 300px;
+}
+
+.item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.item p {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.bloque {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: left;
+  gap: 20px;
+}
+
+.bloque .texto, .bloque .imagen {
+  flex: 1;
+  min-width: 280px;
+}
+
+.bloque .texto {
+  font-size: 16px;
+  text-align: left;
+}
+
+.bloque .imagen img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+
+.bloque.izquierda {
+  flex-direction: row-reverse;
+}
+
+.bloque.centrado {
+  flex-direction: column;
+  text-align: left;
+}
+
+.bloque.centrado .texto {
+  text-align: left;
+  font-size: 17px;
+}
+
+.img-redondeada {
+  border-radius: 100%;
+  overflow: hidden;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* sombra sutil */
+}
+
+  .table-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .row-header {
+            background: #3498db;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            font-size: 18px;
+            border: 1px solid #2980b9;
+            width: 150px;
+            vertical-align: middle;
+        }
+
+        .row-header.positive {
+            background: #3e9fb5;
+            border-color: #296e7d;
+        }
+
+        .row-header.negative {
+            background: #85daed;
+            border-color: #9fdfed;
+        }
+
+        .row-header.solutions {
+            background: #a2d5e0;
+            border-color: #a2d5e0;
+        }
+
+        .content-cell {
+            padding: 20px;
+            border: 1px solid #ddd;
+            background: #fafafa;
+            vertical-align: top;
+            line-height: 1.6;
+            word-wrap: break-word;
+            word-break: break-word;
+            hyphens: auto;
+            min-height: 80px;
+        }
+
+        .content-cell p {
+            margin: 0 0 10px 0;
+        }
+
+        .content-cell p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .info-table {
+                font-size: 14px;
+            }
+            
+            .row-header {
+                width: 120px;
+                padding: 12px;
+                font-size: 16px;
+            }
+            
+            .content-cell {
+                padding: 15px;
+            }
+        }
+
+.referencias-wrapper {
+  width: 100%;
+  text-align: center;
+  margin: 40px 0;
+}
+
+.referencias-boton {
+  display: inline-block;
+  width: 80%;
+  max-width: 700px;
+  background-color: #00b3b3;
+  color: #fff;
+  border-radius: 25px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: max-height 0.5s ease, padding 0.3s ease;
+  text-align: left;
+  padding: 15px;
+}
+
+.referencias-boton .referencias-label {
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.referencias-boton .referencias-contenido {
+  display: none;
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #fff;
+}
+
+.referencias-boton.abierto {
+  background-color: #00b3b3;
+}
+
+.referencias-boton.abierto .referencias-contenido {
+  display: block;
+}
+
+.referencias-boton.abierto .referencias-label::after {
+  content: ' (Ocultar)';
+  font-weight: normal;
+  font-size: 14px;
+}
+
+
+@media (max-width: 768px) {
+  .contenido {
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+
+<nav>
+
+  <div class="nav-icons">
+    <div class="nav-item">
+      <img src="iconos/i1.png" alt="" class="gif-button"
+           data-static="iconos/i1.png" data-animated="iconos/i1.gif" onclick="mostrar('inicio')">
+      <div class="tooltip">Inicio</div>
+    </div>
+    <div class="nav-item">
+      <img src="iconos/i2.png" alt="" class="gif-button"
+           data-static="iconos/i2.png" data-animated="iconos/i2.gif" onclick="mostrar('informe1')">
+      <div class="tooltip">Impacto Ambiental</div>
+    </div>
+    <div class="nav-item">
+      <img src="iconos/i3.png" alt="" class="gif-button"
+           data-static="iconos/i3.png" data-animated="iconos/i3.png" onclick="mostrar('informe2')">
+      <div class="tooltip">Gestión y Enfermedades</div>
+    </div>
+    <div class="nav-item">
+      <img src="iconos/i4.png" alt="" class="gif-button"
+           data-static="iconos/i4.png" data-animated="iconos/i4.png" onclick="mostrar('informe3')">
+      <div class="tooltip">EPSEL</div>
+    </div>
+    <div class="nav-item">
+      <img src="iconos/i5.png" alt="" class="gif-button"
+           data-static="iconos/i5.png" data-animated="iconos/i5.png" onclick="mostrar('informe4')">
+      <div class="tooltip">Problemas y soluciones</div>
+    </div>
+  </div>
+</nav>
+
+<section id="epsel">
+  <div class="portada" style="background-image: url('portadas/images.jpg');">
+    <h1>EPSEL S.A.</h1>
+  </div>
+
+  <div class="contenido">
+    <div class="bloque">
+      <div class="texto">
+        <h2>¿Qué es EPSEL?</h2>
+        <p>
+          EPSEL S.A. (Empresa Prestadora de Servicios de Saneamiento de Lambayeque S.A.) es una empresa pública
+          encargada de brindar los servicios de agua potable, alcantarillado y tratamiento de aguas residuales
+          en la región Lambayeque, Perú. Su misión es garantizar el acceso al agua potable y al saneamiento
+          básico de manera eficiente, sostenible y con calidad, contribuyendo al bienestar y la salud
+          de la población.
+        </p>
+
+        <p>
+          EPSEL opera en diversas localidades de Lambayeque y es responsable de mantener y mejorar
+          la infraestructura hidráulica de la región, así como de promover el uso responsable del agua
+          entre los ciudadanos. También trabaja en proyectos de ampliación de redes y tratamiento
+          adecuado de las aguas residuales para proteger el medio ambiente y los recursos hídricos.
+        </p>
+
+        <p>
+          Para más información, puedes visitar su sitio oficial: 
+          <a href="https://www.epsel.com.pe" target="_blank">www.epsel.com.pe</a>
+        </p>
+      </div>
+
+      <div class="imagen">
+        <img src="imagenes/epsel.jpg" alt="Logo o instalaciones de EPSEL" class="img-redondeada">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="persona">
+  <main>
+    <div class="portada" style="background-image: url('portadas/ie.jpg');">
+      <h1>Persona Encargada Del Sitio web</h1>
+    </div>
+    <div class="contenido">
+      <div class="bloque izquierda">
+        <div class="texto">
+          <h2>Ramos Soto Francish Lionels</h2>
+          <p>
+            Soy estudiante del tercer grado de secundaria en la I.E. San Francisco de Mócupe
+            y creador de este sitio web. Realicé el trabajo de investigación para los contenidos de
+            la página y me encargué del diseño y la programación del sitio, tomando en cuenta también
+            las opiniones y aportes de mis compañeros Rojas Rivas Harlyn Abel, Zuñiga Roncal Thanny y Severino
+            Abat Estrella, quienes colaboraron con sugerencias para la última sección de la web.
+          </p>
+        </div>
+        <div class="imagen">
+          <img src="imagenes/francis.png" alt="Aguas residuales" class="img-redondeada">
+        </div>
+      </div>
+    </div>
+  </main>
+</section>
+
+<section id="inicio" class="active">
+  <main>
+  <div class="portada" style="background-image: url('portadas/portada1.jpg');">
+    <h1>El Lado Oscuro Del Agua En Mócupe</h1>
+  </div>
+  <div class="contenido">
+      <div class="bloque centrado">
+    <div class="texto">
+
+    <!-- Contenido-->
+      <h2>Introducción</h2>
+      <p>Esta página web ha sido elaborada con el objetivo de dar a conocer qué 
+        son las aguas residuales y cómo afectan al Pueblo de Mócupe y el mundo en general. Aquí encontrarás 
+        información sobre el Impacto que tiene, los problemas que generan cuando no reciben
+         un tratamiento adecuado, y algunas propuestas para mejorar su manejo. La intención 
+         es crear conciencia en la población sobre la importancia de cuidar el agua y proteger
+          nuestro medio ambiente.</p>
+    </div>
+
+    <!-- Contenido-->
+    <div class="bloque izquierda">
+      <div class="texto">
+      <h2>¿Qué son las aguas residuales?</h2>
+      <p>Las aguas residuales son aquellas que provienen del uso doméstico, industrial, 
+        comercial o agrícola, y contienen contaminantes físicos, químicos y biológicos que
+         las hacen inadecuadas para el consumo o uso sin tratamiento previo. Estas aguas 
+         pueden contener restos de detergentes, aceites, residuos orgánicos, metales pesados 
+         y microorganismos patógenos que representan un riesgo para la salud humana y el medio
+          ambiente si no se tratan adecuadamente (Organización Mundial de la Salud, 2022).</p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes de la seccion 2/aguas residuales domesticas.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+	
+    <!-- Contenido-->
+    <div class="bloque">
+      <div class="texto">
+      <h2>¿Cuánta agua residual generamos?</h2>
+      <p>Cada día, millones de litros de aguas residuales son generadas por hogares, industrias, comercios y agricultura.
+	  Se estima que una persona puede producir entre 50 y 100 litros de aguas residuales al día solo en su casa. A nivel
+	  mundial, más del 80% de estas aguas regresan al medio ambiente sin ningún tratamiento, lo que demuestra la 
+	  gran cantidad de agua sucia que generamos y la necesidad de un manejo responsable.(Organización Mundial de la Salud, 2020)
+      </p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="awita.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+	
+	
+<div class="referencias-wrapper">
+  <div id="referencias-boton" class="referencias-boton cerrado" onclick="toggleReferencias()">
+    <div class="referencias-label">Ver Referencias</div>
+    <div class="referencias-contenido">
+      <h3>Referencias</h3>
+      <p>
+        Organización Mundial de la Salud. (2022). <em>Saneamiento: Aguas residuales y salud OMS.https://www.who.int/es/news-room/fact-sheets/detail/sanitation
+      </p>
+	  <p>
+        Organización Mundial de la Salud. (2020). Agua, saneamiento e higiene para la salud. OMS.https://www.who.int/water_sanitation_health/publications/wash-health-toolkit/en/
+      </p>
+    </div>
+  </div>
+</div>
+
+ </main>
+
+<footer class="site-footer">
+  <div class="footer-text">
+    © 2025 | Página web elaborada para dar a conocer las aguas residuales en Mócupe
+  </div>
+
+  <div class="footer-columns">
+    <div class="footer-column">
+      <h4>Secciones</h4>
+   <p><a href="javascript:void(0);" onclick="mostrar('inicio')">Inicio</a></p>
+   <p><a href="javascript:void(0);" onclick="mostrar('informe1')">Impacto Ambiental De Las Aguas Residuales</a></p>
+   <p><a href="javascript:void(0);" onclick="mostrar('informe2')">Salud en Riesgo por Mala Gestión del Agua</a></p>
+   <p><a href="javascript:void(0);" onclick="mostrar('informe3')">Lo que dice EPSEL sobre el agua</a></p>
+   <p><a href="javascript:void(0);" onclick="mostrar('informe4')">Planta de Mócupe: problemas y soluciones</a></p>
+    </div>
+
+   <div class="footer-column">
+      <h4>Creditos Especiales</h4>
+   <p><a href="javascript:void(0);" onclick="mostrar('persona')">Persona encargada</a></p>
+	 <p><a href="javascript:void(0);" onclick="mostrar('epsel')">¿Qué es Epsel?</a></p>
+    </div>
+	
+    <div class="footer-column">
+      <h4>Redes Sociales Y Página de EPSEL</h4>
+      <p><a href="https://www.facebook.com/epsel.lambayeque/?locale=es_LA" target="_blank">Facebook</a></p>
+      <p><a href="https://www.epsel.com.pe" target="_blank">EPSEL</a></p>
+    </div>
+    <div class="footer-column">
+      <h4></h4>
+      <p>Diseño: Ramos Soto Francish</p>
+      <p>Investigación: Grupo 4</p>
+      <p>Profesor(a) Del Área: Ruby Estefanía Tafur Delgado</p>
+    </div>
+  </div>
+</footer>
+
+
+  </div>
+</section>
+<section id="informe1">
+  <main>
+  <div class="portada" style="background-image: url('portadas/portada2.jpg');">
+    <h1>Impacto Ambiental De Las Aguas Residuales</h1>
+  </div>
+
+    <!-- Contenido-->
+     <div class="contenido">
+     <div class="bloque">
+     <div class="texto">
+      <h2></h2>
+      <p>El mal manejo de aguas residuales genera contaminación
+            de ríos, lagos y océanos, afecta la biodiversidad acuática
+            y los ecosistemas circundantes. Estos vertidos pueden 
+            contener metales pesados, bacterias patógenas y productos 
+            químicos peligrosos, los cuales alteran el equilibrio natural
+            de los cuerpos de agua, reducen la calidad del suelo y 
+            afectan incluso la atmósfera por emisiones indirectas. (Telwesa, 2023)</p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes de la seccion 2/contaminaciont.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+
+   <!-- Contenido-->
+     <div class="contenido">
+     <div class="bloque izquierda">
+     <div class="texto">
+      <h2></h2>
+      <p> La contaminación del agua a causa de aguas residuales no 
+              tratadas a desencadenado una crisis ambiental mundial.
+              El ecosistema acuático se ve gravemente dañado por la 
+              eutrofización, que se causa la preliferación de algas y la disminución
+              del oxígeno en el agua afectando la vida de peces y otros
+              organismos. Este impacto también amenaza el acceso humano a
+              fuentes limpias. (National Geographic España, 2018)</p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes de la seccion 2/Animalesmarinosmuertos.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+
+    
+   <!-- Contenido-->
+     <div class="contenido">
+     <div class="bloque">
+     <div class="texto">
+      <h2></h2>
+      <p>    El vertido de aguas contamidas en fuentes naturales destruye
+             ecosistemas,envenena especies animales y afecta el 
+             abastecimiento de agua para el consumo humano. Las sustancias
+             tóxicas provenientes de industrias o actividades urbanas pueden
+             perdurar el ambiente y generar efectos irreversibles en el equilibrio ecológico. (NRDC, 2025)</p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes de la seccion 2/aguasresidualestoxicas.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+
+   <!-- Contenido-->
+     <div class="contenido">
+     <div class="bloque centrado">
+     <div class="texto">
+      <h2></h2>
+      <p>Las aguas residuales sin tratar contienen contaminantes peligrosos que
+          alteran los ecosistemas, reducen la calidad y aumentan
+          la propagación de enfermedades. Su acomulación también afecta 
+          los acuiferos subterráneos y pone en riesgo la salud de comunidades rurales y urbanas.(Instituto del Agua, 2024)</p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes de la seccion 2/contaminantes.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+
+  <!-- Contenido-->
+     <div class="contenido">
+     <div class="bloque">
+     <div class="texto">
+      <h2></h2>
+      <p>El tratamiento deficiente de aguas residuales incrementa 
+          los niveles de contaminación en ríos y quebradas, lo que 
+          altera el habita de numerosas especies y afecta a las
+          comunidades que dependen de estos cuerpos de agua. (Colombia verde, 2023)</p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes de la seccion 2/aguasresidualesorilla.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+
+  <!-- Contenido-->
+     <div class="contenido">
+     <div class="bloque izquierda">
+     <div class="texto">
+      <h2></h2>
+      <p>Las aguas residuales arrastran microplásticos que se 
+         acumulan en los océanos y afectan la salud de toda la 
+         cadena alimenticia. (PNUMA, 2022)</p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes de la seccion 2/awitasresiduales.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+
+ <!-- Contenido-->
+     <div class="contenido">
+     <div class="bloque centrado">
+     <div class="texto">
+      <h2></h2>
+      <p>El mal manejo de las aguas residuales, especialmente su 
+         vertido sin tratamiento, provoca una contaminación
+         significativa en ríos y mares. Esta contaminación incluye
+         agentes patógenos, sustancias químicas y desechos que afectan
+         negativamente a la biodiversidad acuática y la salud humana. En 
+         regiones de bajos ingresos, donde menos del 8% de las aguas residuales se trata, los 
+         ecosistemas fluviales se deterioran rápidamente, y se agrava la 
+         propagación de enfermedades hidricas.(UNESCO, 2024)</p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes de la seccion 2/awitaresidual.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+
+ <!-- Contenido-->
+     <div class="contenido">
+     <div class="bloque">
+     <div class="texto">
+      <h2></h2>
+      <p>La investigación determino que el vertimiento de aguas residuales 
+      sin tratamiento en la ciudad de Tumbes, Perú a generado un deterioro
+      ambiental notable. Se observo
+      una fuerte disminución en la calidad del agua, montones de especies
+      acuáticas y alteración de la vegetación ribereña. Estas aguas contienen
+      altos niveles de materia orgánica y contaminantes, afectando negativamente 
+      a los ecosistemas acuáticos y la salud de la población cercana.(Niquén Inga, 2021)</p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes de la seccion 2/awas.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+	
+
+<div class="referencias-wrapper">
+  <div id="referencias-boton-2" class="referencias-boton cerrado" onclick="toggleReferencias('2')">
+    <div class="referencias-label">Ver Referencias</div>
+    <div class="referencias-contenido">
+      <h3>Referencias</h3>
+          <p>
+          Telwesa. (2023). Impacto ambiental de las aguas residuales. Telwesa. https://telwesa.com/impacto-ambiental-aguas-residuales/
+        </p>
+          <p>
+          National Geographic España. (2018). Contaminación del agua:causas, consecuencias y soluciones. https://www.nationalgeographic.es/medio-ambiente/contaminación-del-agua
+        </p>
+          <p>
+          Natural Resources Defense Council (NRDC). (2025). Contaminación del agua:todo lo que necesitas saber. https://wwwnrdc.org/es/stories/contaminacion-agua-todo-lo-necesitas-saber
+        </p>
+        <p>
+          Instituto del Agua. (2024). Consecuencias de las aguas residuales. https://instituodelagua.es/aguas-residuales/consecuencias-de-las-aguas-residualesaguas-residuales/
+        </p>
+          <p>
+          Colombia Verde.(2023). Impacto ambiental por el tratamiento de aguas residuales. https://colombiaverde.com.co/geografia/hidrografia/impacto-ambiental-por-el-tratamiento-de-aguas-residuales/
+        </p>
+        <p>
+          Programa de las Naciones Unidas para el Medio Ambiente (PNUMA). (2022). Microplásticos: consecuencias históricas de la contaminación por plástico. https://www.unep.org/es/noticias-y-reportajes/reportajes/microplasticos-consecuencias-historicas-de-la-contaminacion
+        </p>
+          <p>
+          UNESCO. (2024).¿Son las aguas residuales el nuevo "oro negro"?. https://www.unesco.org/es/articles/son-las-aguas-residuales-el-nuevo-oro-negro
+        </p>
+          <p>
+          Niquén Inga, (2021), Impactos ambientales generados por vertimiento de aguas residuales urbanas de la ciudad de Tumbes - perú.RECIAMUC. https://doi.org/10.26820/reciamuc/5.(3).agosto.2021.222-232
+        </p>
+    </div>  
+  </div>
+</div>
+
+ </main>
+
+<footer class="site-footer">
+  <div class="footer-text">
+    © 2025 | Página web elaborada para dar a conocer las aguas residuales en Mócupe
+  </div>
+
+  <div class="footer-columns">
+    <div class="footer-column">
+      <h4>Secciones</h4>
+   <p><a href="javascript:void(0);" onclick="mostrar('inicio')">Inicio</a></p>
+   <p><a href="javascript:void(0);" onclick="mostrar('informe1')">Impacto Ambiental De Las Aguas Residuales</a></p>
+   <p><a href="javascript:void(0);" onclick="mostrar('informe2')">Salud en Riesgo por Mala Gestión del Agua</a></p>
+   <p><a href="javascript:void(0);" onclick="mostrar('informe3')">Lo que dice EPSEL sobre el agua</a></p>
+   <p><a href="javascript:void(0);" onclick="mostrar('informe4')">Planta de Mócupe: problemas y soluciones</a></p>
+    </div>
+
+   <div class="footer-column">
+      <h4>Creditos Especiales</h4>
+   <p><a href="javascript:void(0);" onclick="mostrar('persona')">Persona encargada</a></p>
+	 <p><a href="javascript:void(0);" onclick="mostrar('epsel')">¿Qué es Epsel?</a></p>
+    </div>
+	
+    <div class="footer-column">
+      <h4>Redes Sociales Y Página de EPSEL</h4>
+      <p><a href="https://www.facebook.com/epsel.lambayeque/?locale=es_LA" target="_blank">Facebook</a></p>
+      <p><a href="https://www.epsel.com.pe" target="_blank">EPSEL</a></p>
+    </div>
+    <div class="footer-column">
+      <h4></h4>
+      <p>Diseño: Ramos Soto Francish</p>
+      <p>Investigación: Grupo 4</p>
+      <p>Profesor(a) Del Área: Ruby Estefanía Tafur Delgado</p>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+</section>
+
+<section id="informe2">
+<main>
+  <div class="portada" style="background-image: url('portadas/portada3.jpg');">
+    <h1>Salud en Riesgo por Mala Gestión del Agua</h1>
+  </div>
+
+ <!-- Contenido-->
+     <div class="contenido">
+     <div class="bloque">
+     <div class="texto">
+      <h2></h2>
+      <p>La gestión deficiente de aguas servidas aumenta el riesgo de contraer enfermedades 
+	  como diarrea, cólera, disentería, fiebre tifoidea y hepatitis A, especialmente en comunidades
+	  sin saneamiento básico Las soluciones incluyen desinfección del agua con cloro y plata coloidal,
+	  hervirla antes del consumo, usar sistemas de purificación doméstica y mejorar los sistemas de
+	  saneamiento para evitar contaminación cruzada entre aguas residuales y potables.(Secretaría de Salud,2024)</p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes de la seccion 3/botella.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+
+ <!-- Contenido-->
+     <div class="contenido">
+     <div class="bloque izquierda">
+     <div class="texto">
+      <h2></h2>
+      <p>Las aguas residuales sin tratar contaminan fuentes de agua potable causando múltiples enfermedades: anemia, 
+	  arsenicosis, cólera, hepatitis A, malaria, poliomielitis y fiebre tifoidea. Las soluciones de tratamiento incluyen 
+	  filtración avanzada, desinfección química, tratamiento biológico, separación de sistemas de agua potable y residual,
+	  y tecnologías de purificación específicas para cada contaminante.(Lenntech, 2024)</p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes de la seccion 3/aguas y virus.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+	
+	<!-- Contenido-->
+     <div class="contenido">
+     <div class="bloque centrado">
+     <div class="texto">
+      <h2></h2>
+      <p> Los gérmenes en aguas contaminadas se transmiten por contacto directo, ingestión o aspiración, proliferando 
+	  donde falta saneamiento básico. Las soluciones incluyen tratamiento primario, secundario y terciario de aguas 
+	  residuales, plantas de tratamiento biológico, desinfección ultravioleta y ozono, separación de sistemas de agua 
+	  potable y residual, y educación sanitaria para prevenir contaminación cruzada.(MD Saúde,2025)</p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes de la seccion 3/BacE.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+		
+	<!-- Contenido-->
+     <div class="contenido">
+     <div class="bloque izquierda">
+     <div class="texto">
+      <h2></h2>
+      <p> Las aguas residuales sin tratar causan enfermedades gastrointestinales como cólera, hepatitis A, 
+	  gastroenteritis y salmonelosis cuando contaminan agua potable o acuíferos.Las soluciones incluyen depuración
+	  biológica con lodos activados, tratamiento fisicoquímico, filtración por membranas, desinfección con cloro/ozono/UV,
+	  plantas descentralizadas para comunidades rurales y sistemas de reutilización de aguas tratadas.(Depuradoras MSB,2024)</p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes de la seccion 3/cin.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+	
+	<!-- Contenido-->
+     <div class="contenido">
+     <div class="bloque centrado">
+     <div class="texto">
+      <h2></h2>
+      <p> La falta de desinfección en aguas residuales permite supervivencia de patógenos 
+	  causando gastroenteritis, hepatitis, cólera y fiebre tifoidea, especialmente en niños
+	  y adultos mayores. Las soluciones incluyen coagulación-floculación, sedimentación, 
+	  filtración granular, desinfección con cloro, oxidación avanzada, ultrafiltración por 
+	  membranas y monitoreo continuo de calidad del agua tratada(Aguas Residuales Info,2024)</p>
+    </div>
+	
+		<!-- Contenido-->
+     <div class="contenido">
+     <div class="bloque">
+     <div class="texto">
+      <h2></h2>
+      <p> Las enfermedades hídricas incluyen infecciones bacterianas (cólera, salmonelosis),
+	  virales (hepatitis A, poliomielitis) y parasitarias (giardiasis, amebiasis) por agua contaminada
+	  con aguas servidas. Las soluciones incluyen alcantarillado centralizado, saneamiento descentralizado
+	  rural, educación en higiene, purificación doméstica, infraestructura de agua potable y gestión integral 
+	  de recursos hídricos.(Wikipedia, 2024)</p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes de la seccion 3/na.jpeg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+			
+	<!-- Contenido-->
+     <div class="contenido">
+     <div class="bloque izquierda">
+     <div class="texto">
+      <h2></h2>
+      <p>Los procesos inadecuados permiten que patógenos, metales pesados y químicos tóxicos contaminen
+	  agua potable causando enfermedades gastrointestinales, cutáneas y problemas crónicos. Las soluciones 
+	  incluyen sedimentación, desferrización, desmanganización, esterilización con cloro/ozono/UV, desalinización
+	  y monitoreo continuo de calidad (Aerzén, 2024)</p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes de la seccion 3/aguassucia.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+	
+	<!-- Contenido-->
+     <div class="contenido">
+     <div class="bloque centrado">
+     <div class="texto">
+      <h2></h2>
+      <p> Las aguas residuales contienen contaminantes que causan enfermedades gastrointestinales, parasitarias 
+	  y virales cuando contaminan fuentes de abastecimiento. Las soluciones incluyen procesos físicos (cribado, sedimentación), 
+	  químicos (coagulación, floculación), biológicos (aeróbicos, anaeróbicos), desinfección final y sistemas integrados con
+	  monitoreo automatizado.(Ferrovial, 2022)</p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes de la seccion 3/s.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+		
+	<!-- Contenido-->
+     <div class="contenido">
+     <div class="bloque izquierda">
+     <div class="texto">
+      <h2></h2>
+      <p>La exposición a aguas residuales causa infecciones desde gastroenteritis hasta fallas respiratorias y muerte,
+	  especialmente durante desbordamientos de alcantarillado. Las soluciones incluyen equipos de protección personal,
+	  sistemas de alerta temprana, protocolos de desinfección de emergencia, vacunación preventiva contra hepatitis A y 
+	  fiebre tifoidea, y planes de respuesta rápida.(Clínica Anglo Americana, 2019)</p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes de la seccion 3/hepatitis.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+
+
+<div class="referencias-wrapper">
+  <div id="referencias-boton-3" class="referencias-boton cerrado" onclick="toggleReferencias('3')">
+    <div class="referencias-label">Ver Referencias</div>
+    <div class="referencias-contenido">
+      <h3>Referencias</h3>
+          <p>
+          Lenntech. (2024). Enfermedades transmitidas por elagua. https://www.lenntech.es/biblioteca/enfermedades/enfermedades-trans
+        </p>
+          <p>
+          MD Saúde. (2025). Enfermedades causadas por agua contaminada con gérmenes. https://www.mdsaude.com/es/enfermedades-infecciosas/enfermedades-transmitidas-por-el-agua/
+        </p>
+          <p>
+         Depuradoras MSB. (2024). ¿Cómo afectan las aguas residuales a la salud humana? https://depuradorasmsb.com/aguas-residuales-salud-humana/ Aguas Residuales Info. (2024). El tratamiento de aguas para la prevención de enfermedades. https://www.aguasresiduales.info/revista/noticias/el-tratamiento-de-aguas-para-la-prevencion-de-enfe-OkIYs
+        </p>
+        <p>
+          Wikipedia. (2025). Enfermedades de origen hídrico. Wikipedia. https://es.wikipedia.org/wiki/Enfermedades_de_origen_h%C3%ADdrico
+        </p>
+          <p>
+         Aerzén. (2024). Los procesos básicos del tratamiento de las aguas residuales. https://www.aerzen.com/es/aplicaciones/tratamiento-de-aguas-y-aguas-residuales/asesor-de-tratamiento-de-aguas-residuales/procesos-basicos-del-tratamiento-de-aguas-residuales
+        </p>
+        <p>
+        Ferrovial. (2022). Qué son las aguas residuales y cómo tratarlas. https://www.ferrovial.com/es/recursos/aguas-residuales/
+        </p>
+          <p>
+         Clínica Anglo Americana. (2019). ¿Aguas residuales? Consejos para evitar infecciones. https://clinicaangloamericana.pe/aguas-residuales-consejos-para-evitar-infecciones/
+        </p>
+          <p>
+        AguasResiduales.info. (2024). Tendencias de las aguas residuales para 2024: Digitalización de las EDAR. Revista AguasResiduales.info. https://www.aguasresiduales.info/revista/noticias/tendencias-del-agua-en-aguas-residuales-para-2024--dN2Ou
+        </p>
+    </div>  
+  </div>
+</div>
+
+ </main>
+
+<footer class="site-footer">
+  <div class="footer-text">
+    © 2025 | Página web elaborada para dar a conocer las aguas residuales en Mócupe
+  </div>
+
+  <div class="footer-columns">
+    <div class="footer-column">
+      <h4>Secciones</h4>
+   <p><a href="javascript:void(0);" onclick="mostrar('inicio')">Inicio</a></p>
+   <p><a href="javascript:void(0);" onclick="mostrar('informe1')">Impacto Ambiental De Las Aguas Residuales</a></p>
+   <p><a href="javascript:void(0);" onclick="mostrar('informe2')">Salud en Riesgo por Mala Gestión del Agua</a></p>
+   <p><a href="javascript:void(0);" onclick="mostrar('informe3')">Lo que dice EPSEL sobre el agua</a></p>
+   <p><a href="javascript:void(0);" onclick="mostrar('informe4')">Planta de Mócupe: problemas y soluciones</a></p>
+    </div>
+
+   <div class="footer-column">
+      <h4>Creditos Especiales</h4>
+   <p><a href="javascript:void(0);" onclick="mostrar('persona')">Persona encargada</a></p>
+	 <p><a href="javascript:void(0);" onclick="mostrar('epsel')">¿Qué es Epsel?</a></p>
+    </div>
+	
+    <div class="footer-column">
+      <h4>Redes Sociales Y Página de EPSEL</h4>
+      <p><a href="https://www.facebook.com/epsel.lambayeque/?locale=es_LA" target="_blank">Facebook</a></p>
+      <p><a href="https://www.epsel.com.pe" target="_blank">EPSEL</a></p>
+    </div>
+    <div class="footer-column">
+      <h4></h4>
+      <p>Diseño: Ramos Soto Francish</p>
+      <p>Investigación: Grupo 4</p>
+      <p>Profesor(a) Del Área: Ruby Estefanía Tafur Delgado</p>
+    </div>
+  </div>
+</footer>
+
+</section>
+
+<section id="informe3">
+ <main>
+  <div class="portada" style="background-image: url('portadas/portada4.jpg');">
+    <h1>Lo que dice EPSEL sobre el agua</h1>
+  </div>
+  <div class="contenido">
+    <div class="texto">
+      <h2>Entrevista y Charla de EPSEL</h2>
+      <p> En la entrevista tipo charla que realizamos con EPSEL en nuestra institución educativa, 
+	  nos explicaron sobre el alcantarillado, el desagüe, su labor en el tratamiento del agua y respondieron
+	  diversas preguntas que les hicimos. A continuación, se presenta esta información.(C.Cesar, comunicación personal, 11/06/2025)</p>
+    </div>
+
+ 
+     <!-- Contenido-->
+  <div class="contenido">
+      <div class="bloque izquierda">
+    <div class="texto">
+      <h2>¿Qué es el desagüe?</h2>
+      <p>El desagüe es la tubería que saca el agua sucia de nuestras casas y la lleva a la red de alcantarillado
+	  para que no se quede en las calles ni contamine. Según un trabajador de EPSEL, “el desagüe es la primera parte 
+	  del camino del agua usada, es lo que conecta tu casa con todo el sistema que nosotros operamos”.(C.Cesar, comunicación personal, 11/06/2025)</p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes de seccion 4/desague.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+  </div>
+  
+      <!-- Contenido-->
+  <div class="contenido">
+      <div class="bloque">
+    <div class="texto">
+      <h2>¿Qué es el alcantarillado?</h2>
+      <p>El alcantarillado es la gran red de tuberías que recoge las aguas residuales de los desagües de
+	  todas las casas y las lleva hasta la planta de tratamiento. En los alcantarillados mayormente se encuentran
+      objetos que obstruyen las tuberias y dificulta a la vez el proceso de limpieza de las aguas en la planta de tratamiento.(C.Cesar, comunicación personal, 1/06/2025)
+	  </p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes de seccion 4/al.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+  </div>      
+  
+  <!-- Contenido-->
+  <div class="contenido">
+      <div class="bloque">
+    <div class="texto">
+      <h2> Objetos encontrados en el alcantarillado</h2>
+      <p>los trabajadores de EPSEL nos comentaron que muchas veces encuentran objetos inesperados atascando las tuberías
+	  del alcantarillado. Entre los más comunes están plásticos, trapos, llantas, botellas, mochilas y hasta animales muertos,
+	  y la gente piensa que esos objetos desaparecen hacen que el trabajo de limpiar las aguas sean mas dificil.(C.Cesar, comunicación personal, 11/06/2025)
+	  </p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes/m.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+  </div>
+  
+ <!-- parte 2-->
+ <div class="contenido">
+    <div class="texto">
+      <h2>Visita a la planta de tratamiento de Mócupe</h2>
+      <p>En la visita nos hablan de como llega el agua a la planta y proceso de limpieza. A continuación la información</p>
+    </div>
+
+  <!-- Contenido-->
+  <div class="contenido">
+      <div class="bloque">
+    <div class="texto">
+      <h2>¿Cómo llega el agua a la planta?</h2>
+      <p>Para empezar el agua en el arcantarillado pasan por tuberias pequeñas de un diametro pequeño de 8 hasta uno de 14
+	  por este recorrido las aguas van descargando cosas mientras pasan para que el agua llegue a la planta las tuberias van en 
+	  forma diagonal asi bajando como la altura de las partes de las casas son mas superiores y la planta mas inferior y asi llegando a la planta de tratamiento.(C.Cesar, comunicación personal, 18/06/2025)
+	  </p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes de seccion 4/tubo.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+  </div>  
+  
+  <!-- Contenido-->
+  <div class="contenido">
+      <div class="bloque izquierda">
+    <div class="texto">
+      <h2>Cámara de rejas</h2>
+      <p>Continuando, el agua que llega a la planta pasa primero por la cámara de rejas, donde se retienen los 
+	  sólidos más grandes. A veces, los trabajadores deben retirar manualmente los objetos usando una palanca o 
+	  una herramienta creada por ellos mismos, ya que algunos son tan grandes que obstruyen las rejas.(C.Cesar, comunicación personal, 18/06/2025)
+	  </p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes/1.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+  </div>
+  <!-- Contenido-->
+  <div class="contenido">
+      <div class="bloque centrado">
+    <div class="texto">
+      <h2></h2>
+	  </p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes/8.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+  </div>
+  
+  <!-- Contenido-->
+  <div class="contenido">
+      <div class="bloque">
+    <div class="texto">
+      <h2>Camara Primaria</h2>
+      <p>Despues de la la camara de rejas llega a la camara primaria por cual pasa un proceso de fotosintesis para limpiar desechos minimos de agua(C.Cesar, comunicación personal, 18/06/2025)
+	  </p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes/4.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+	 
+ <!-- Contenido-->
+  <div class="contenido">
+      <div class="bloque izquierda">
+    <div class="texto">
+      <h2>Lagunas Primarias</h2>
+      <p>Despues de la camara primaria llegan a lagunas primarias donde se termina de limpiar estas aguas y devuelta estan listas para usarlas(C.Cesar, comunicación personal, 18/06/2025)
+	  </p>
+    </div>
+    <div class="imagen" class="item">
+      <img src="imagenes de seccion 4/aaa.jpg" alt="Aguas residuales" class="img-redondeada">
+    </div>
+	
+ <div class="referencias-wrapper">
+  <div id="referencias-boton-4" class="referencias-boton cerrado" onclick="toggleReferencias('4')">
+    <div class="referencias-label">Ver Referencias</div>
+    <div class="referencias-contenido">
+      <h3>Referencias</h3>
+          <p>
+        Empresa Prestadora de Servicios de Saneamiento de Lambayeque S.A. (2025), https://www.epsel.com.pe
+        </p>
+    </div>  
+  </div>
+</div>
+
+ </main>
+ 
+<footer class="site-footer">
+  <div class="footer-text">
+    © 2025 | Página web elaborada para dar a conocer las aguas residuales en Mócupe
+  </div>
+
+  <div class="footer-columns">
+    <div class="footer-column">
+      <h4>Secciones</h4>
+   <p><a href="javascript:void(0);" onclick="mostrar('inicio')">Inicio</a></p>
+   <p><a href="javascript:void(0);" onclick="mostrar('informe1')">Impacto Ambiental De Las Aguas Residuales</a></p>
+   <p><a href="javascript:void(0);" onclick="mostrar('informe2')">Salud en Riesgo por Mala Gestión del Agua</a></p>
+   <p><a href="javascript:void(0);" onclick="mostrar('informe3')">Lo que dice EPSEL sobre el agua</a></p>
+   <p><a href="javascript:void(0);" onclick="mostrar('informe4')">Planta de Mócupe: problemas y soluciones</a></p>
+    </div>
+
+   <div class="footer-column">
+      <h4>Creditos Especiales</h4>
+   <p><a href="javascript:void(0);" onclick="mostrar('persona')">Persona encargada</a></p>
+	 <p><a href="javascript:void(0);" onclick="mostrar('epsel')">¿Qué es Epsel?</a></p>
+    </div>
+	
+    <div class="footer-column">
+      <h4>Redes Sociales Y Página de EPSEL</h4>
+      <p><a href="https://www.facebook.com/epsel.lambayeque/?locale=es_LA" target="_blank">Facebook</a></p>
+      <p><a href="https://www.epsel.com.pe" target="_blank">EPSEL</a></p>
+    </div>
+    <div class="footer-column">
+      <h4></h4>
+      <p>Diseño: Ramos Soto Francish</p>
+      <p>Investigación: Grupo 4</p>
+      <p>Profesor(a) Del Área: Ruby Estefanía Tafur Delgado</p>
+    </div>
+  </div>
+</footer>
+
+</section>
+
+<section id="informe4">
+<main>
+  <div class="portada" style="background-image: url('portadas/portada5.jpg');">
+    <h1>Planta de Mócupe: problemas y soluciones</h1>
+  </div>
+   <div class="contenido">
+    <div class="bloque centrado">
+    <div class="texto">
+      <h2>Propuestas para Mejorar el proceso de Limpieza de las Aguas Servidas</h2>
+      <p></p>
+    </div>
+  </div>
+ 
+ <div class="table-container">
+        <table class="info-table">
+            <tr>
+                <td class="row-header positive">Positivo</td>
+                <td class="content-cell">
+                    <p>Vi que en la planta había una reja que ayudaba a mantener el lugar más limpio y ordenado, evitando que entren animales o basura de afuera.
+                       (E.Severino, comunicación personal, 26/06/2025).</p>
+                </td>
+                <td class="content-cell">
+                    <p>No Pudimos ver la limpieza o nos dijeron del químico que usan para limpiar las aguas residuales pero seguro limpian con químicos seguros.
+                    (F.Ramos, comunicación personal, 26/06/2025)</p>
+                </td>
+                <td class="content-cell">
+                    <p>En el lugar escuche que el tamaño mínimo de las tuberías por donde pasa el agua desechada eran de 6 pulgadas y las más anchas eran de 14 pulgadas eso es lo normal.
+                       (H.Rojas, comunicación personal, 26/06/2025).</p>
+                </td>
+                <td class="content-cell">
+                    <p>Se pudo observar que el agua residual es sometida a varios procesos como filtrado y sedimentación, lo que ayuda a reducir gran parte de los sólidos y contaminantes visibles antes de su descarga.
+                       (T.Zuñiga, comunicación personal, 26/06/2025)</p>
+                </td>
+                <td class="content-cell">
+                    <p>El mal olor disminuye al final del proceso Aunque al inicio el agua huele muy mal, al final del recorrido ese olor fuerte ya no está presente, lo que indica que al menos 
+					parte de los residuos orgánicos se están eliminando correctamente.(F.Ramos, comunicación personal, 26/06/2025)</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="row-header negative">Negativo</td>
+                <td class="content-cell">
+                    <p>Noté que la red actual no funciona bien y sería mejor que elaboraran una nueva red para mejorar el control del lugar.(E.Severino, comunicación personal, 26/06/2025).</p>
+                </td>
+                <td class="content-cell">
+                    <p>No pudimos ver la limpieza de las aguas residuales pero algo esta pasando mal ya que el agua en mocupe viene con sarro de lo que queda bacterias todavía.
+                      (F.Ramos, comunicación personal, 26/06/2025)</p>
+                </td>
+                <td class="content-cell">
+                    <p>Bueno el tamaño es muy pequeño ya que hay veces que se tapan las tuberías por grasas o otra residuos que pueden pasar por las rejas.
+                      (H.Rojas, comunicación personal, 26/06/2025)</p>
+                </td>
+                <td class="content-cell">
+                     <p>Al observar la salida final, el agua no se ve completamente limpia. Aún hay residuos y un color oscuro, lo que indica que el tratamiento no elimina todos los contaminantes.
+                      (T.Zuñiga, comunicación personal, 26/06/2025)</p>
+                </td>
+                <td class="content-cell">
+                    <p>No se garantiza la eliminación de bacterias ni se mide la calidad final No se observó ninguna señal de que se realicen pruebas de calidad del agua tratada (como cloración o análisis microbiológicos), por lo que no se puede asegurar que el agua esté realmente libre de bacterias o segura para el ambiente.(F.Ramos, comunicación personal, 26/06/2025)</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="row-header solutions">Soluciones</td>
+                <td class="content-cell">
+                    <p>Una solución eficaz para mejorar la red de control en plantas de tratamiento es instalar rejillas automáticas, tamices rotativos, fabricadas en acero inoxidable y diseñadas a medida. Estas rejillas evitan la acumulación de sólidos y mejoran la eficiencia del sistema sin requerir limpieza manual constante (SEFT, 2010).</p>
+                </td>
+                <td class="content-cell">
+                    <p>Para eliminar el sarro y la carga bacteriana en las aguas residuales, se recomienda el uso de agentes microbianos que actúen como inhibidores de incrustaciones. Un estudio de Hu et al. (2022) demostró que dichos agentes reducen significativamente la corrosión y formación de sarro en sistemas industriales de agua, mejorando la calidad microbiológica del fluido.(Hu, Chen, & Liu, 2022)</p>
+                </td>
+                <td class="content-cell">
+                    <p>Las tuberías de 6 pulgadas pueden obstruirse fácilmente por grasas y residuos. Por eso, se recomienda usar tuberías de al menos 8 pulgadas en redes principales para evitar bloqueos y mejorar el flujo (OME, 2024).</p>
+                </td>
+                <td class="content-cell">
+                    <p>Implementar una filtración avanzada, que elimina partículas finas de hasta 5 cm mediante sistemas como membranas, arena o carbón activado. Estas tecnologías ofrecen una barrera eficaz contra sólidos, microplásticos y materia orgánica, mejorando notablemente la claridad del efluente(Vitagua, 2023)</p>
+                </td>
+                <td class="content-cell">
+                    <p>La desinfección con luz ultravioleta (UVDC) es una tecnología eficaz para eliminar bacterias sin necesidad de productos químicos, reduciendo coliformes y patógenos en aguas residuales (Salinas & Jiménez, 2020).</p>
+                </td>
+            </tr>
+        </table>
+		  </div>
+
+ <div class="referencias-wrapper">
+  <div id="referencias-boton-5" class="referencias-boton cerrado" onclick="toggleReferencias('5')">
+    <div class="referencias-label">Ver Referencias</div>
+    <div class="referencias-contenido">
+      <h3>Referencias</h3>
+         <p>
+         SEFT. (2010.). Rejas Tamiz de Escalera: equipo a medida para tratamiento de aguas residuales. https://seftgroup.com/es/rejas-tamiz-de-escalera-equipo-a-medida-para-tratamiento-agua-residuales-lodo-plantas-de-purificacion-municipal
+        </p>
+          <p>
+         Hu, Y., Chen, C., & Liu, S. (2022). Evaluation of microbial agents as corrosion and scale inhibitor for industrial cooling water applications. Water Science & Technology, 85(6), 1904–1919. https://doi.org/10.2166/wst.2022.051
+        </p>
+          <p>
+      Ontario Ministry of the Environment. (2024). Design guidelines for sewage works: Odour Control and Design of Sewer. https://www.ontario.ca/document/design-guidelines-sewage-works/odour-control-and-design-sewer
+        </p>
+        <p>
+         Vitaqua. (2023). Filtración avanzada para el tratamiento de aguas. https://vitaqua.es/filtracion-avanzada-para-el-tratamiento-de-aguas/
+        </p>
+    </div>  
+  </div>
+</div>
+
+ </main>
+
+<footer class="site-footer">
+  <div class="footer-text">
+    © 2025 | Página web elaborada para dar a conocer las aguas residuales en Mócupe
+  </div>
+
+  <div class="footer-columns">
+    <div class="footer-column">
+      <h4>Secciones</h4>
+   <p><a href="javascript:void(0);" onclick="mostrar('inicio')">Inicio</a></p>
+   <p><a href="javascript:void(0);" onclick="mostrar('informe1')">Impacto Ambiental De Las Aguas Residuales</a></p>
+   <p><a href="javascript:void(0);" onclick="mostrar('informe2')">Salud en Riesgo por Mala Gestión del Agua</a></p>
+   <p><a href="javascript:void(0);" onclick="mostrar('informe3')">Lo que dice EPSEL sobre el agua</a></p>
+   <p><a href="javascript:void(0);" onclick="mostrar('informe4')">Planta de Mócupe: problemas y soluciones</a></p>
+    </div>
+
+   <div class="footer-column">
+      <h4>Creditos Especiales</h4>
+   <p><a href="javascript:void(0);" onclick="mostrar('persona')">Persona encargada</a></p>
+	 <p><a href="javascript:void(0);" onclick="mostrar('epsel')">¿Qué es Epsel?</a></p>
+    </div>
+	
+    <div class="footer-column">
+      <h4>Redes Sociales Y Página de EPSEL</h4>
+      <p><a href="https://www.facebook.com/epsel.lambayeque/?locale=es_LA" target="_blank">Facebook</a></p>
+      <p><a href="https://www.epsel.com.pe" target="_blank">EPSEL</a></p>
+    </div>
+    <div class="footer-column">
+      <h4></h4>
+      <p>Diseño: Ramos Soto Francish</p>
+      <p>Investigación: Grupo 4</p>
+      <p>Profesor(a) Del Área: Ruby Estefanía Tafur Delgado</p>
+    </div>
+  </div>
+</footer>
+
+  </section>
+ 
+<script>
+
+function mostrar(id) {
+  const secciones = document.querySelectorAll("section");
+  secciones.forEach(seccion => {
+    seccion.classList.remove("active");
+  });
+  const activa = document.getElementById(id);
+  if (activa) {
+    activa.classList.add("active");
+    window.scrollTo(0, 0);
+  } else {
+    console.error("No se encontró la sección con id:", id);
+  }
+}
+
+
+// Lógica para los GIFs
+const buttons = document.querySelectorAll('.gif-button');
+buttons.forEach(btn => {
+  btn.addEventListener('mouseenter', () => {
+    btn.src = btn.dataset.animated;
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.src = btn.dataset.static;
+  });
+});
+
+function toggleReferencias(num = '') {
+  const boton = document.getElementById(`referencias-boton${num ? '-' + num : ''}`);
+  const label = boton.querySelector('.referencias-label');
+  boton.classList.toggle('abierto');
+  if (boton.classList.contains('abierto')) {
+    label.textContent = 'Ocultar Referencias';
+  } else {
+    label.textContent = 'Ver Referencias';
+  }
+}
+
+
+</script>
+
+
+</body>
+</html>
